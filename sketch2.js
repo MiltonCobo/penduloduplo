@@ -37,16 +37,10 @@ let sketch = function (p) {
   };
 
   p.draw = function () {
-    // let newWidth = wrapper.getBoundingClientRect().width; // save initial values of width,height
-    // let newHeight = wrapper.getBoundingClientRect().height;
-
-    // cx = newWidth / 2;
-    // cy = newHeight / 2;
-
     p.background(175);
 
     p.imageMode(p.CORNER);
-    p.image(buffer, 0, 0, newWidth, newHeight);
+    p.image(buffer, 0, 0);
 
     let num1 = -g * (2 * m1 + m2) * Math.sin(a1);
     let num2 = -m2 * g * Math.sin(a1 - 2 * a2);
@@ -107,14 +101,13 @@ let sketch = function (p) {
     newWidth = wrapper.getBoundingClientRect().width; // save initial values of width,height
     newHeight = wrapper.getBoundingClientRect().height;
 
-    p.resizeCanvas(newWidth, newHeight);
+    console.log(newHeight);
+
     cx = newWidth / 2;
     cy = newHeight / 2;
-    buffer.size(newWidth, newHeight);
+    buffer.size(newWidth, newHeight).hide();
     buffer.translate(cx, cy);
-    // buffer.image(buffer, 0, 0, newWidth, newHeight);
-
-    // console.log("newWidth = ", newWidth);
+    p.resizeCanvas(newWidth, newHeight);
   };
 
   //---------------------------------END REACTIVITY ----------------------------------------------
